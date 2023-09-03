@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Newsletter Signup</title>
+    <link rel="stylesheet" href="newscs.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left"> 
+            <h1>Stay updated!</h1>
+            <p class="description">Join 60,000+ product managers receiving monthly updates on:</p>
+            <p class="para"> <img src="icon-list.svg" alt="tick"> Product discovery and building what matters</p>
+            <p class="para"> <img src="icon-list.svg" alt="tick"> Measuring to ensure updates are a success
+            </p>
+            <p class="paraend"> <img src="icon-list.svg" alt="tick"> And much more!
+            </p>
+            
+            <label for="userprompt" class="email">Email address</label>
+            <input type="email" class="inputbox" id="userprompt" placeholder="email@company.com" required>
+            <span class="error" id="valid"></span>
+            
+            <button class="button" id="btn">Subscribe to monthly newsletter</button>
+        </div>
+        <div class="right">
+            <img src="illustration-sign-up-desktop.svg" alt="right-pic">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userPrompt = document.getElementById("userprompt");
+            const subscribeBtn = document.getElementById("btn");
+            const errorEmail = document.getElementById("valid");
+            
+            subscribeBtn.addEventListener("click", function () {
+                const promptValue = userPrompt.value;
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                
+                if (emailPattern.test(promptValue)) {
+                    // Email is valid
+                    errorEmail.textContent = ""; // Clear the error message
+                    userPrompt.style.borderColor = "";
+                    userPrompt.style.backgroundColor = "";
+                    window.location.href = "page2.html"; // Redirect to another page
+                } else {
+                    // Email is not valid
+                    errorEmail.textContent = "Valid email required";
+                    userPrompt.style.borderColor = "red";
+                    userPrompt.style.backgroundColor = "#FFD1DC";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
